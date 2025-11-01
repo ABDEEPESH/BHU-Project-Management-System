@@ -1,0 +1,30 @@
+### Node ###
+node_modules/
+/.pnp
+.pnp.js
+build/
+dist/
+coverage/
+
+### Java ###
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+### IDE ###
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+### Environment ###
+.env
+.env.local
+.DS_Store
+Thumbs.db
