@@ -1,0 +1,48 @@
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .card {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-mode .card-header {
+  background-color: #555;
+}
+
+.dark-mode .table {
+  color: #fff;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .form-control {
+  background-color: #555;
+  color: #fff;
+  border-color: #777;
+}
+
+.dark-mode .form-control:focus {
+  background-color: #666;
+  color: #fff;
+}
+
+.dark-mode .alert-warning {
+  background-color: #5c4a1e;
+  color: #ffeeba;
+  border-color: #856404;
+}
+
+.dark-mode .alert-info {
+  background-color: #1e4c5c;
+  color: #d1ecf1;
+  border-color: #0c5460;
+}
+
+.dark-mode .text-muted {
+  color: #adb5bd !important;
+}

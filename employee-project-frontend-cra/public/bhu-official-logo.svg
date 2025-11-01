@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-orange { fill: #FF6B35; stroke: #E55A2B; }
+      .logo-lines { fill: none; stroke: #FF6B35; stroke-width: 1; }
+      .logo-details { fill: #FF6B35; stroke: #FF6B35; stroke-width: 0.5; }
+      .text-devanagari { fill: #FF6B35; font-family: 'Noto Sans Devanagari', Arial, sans-serif; font-weight: bold; }
+      .text-english { fill: #FF6B35; font-family: Arial, sans-serif; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#FF6B35" stroke-width="2"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#FF6B35" stroke-width="1"/>
+  
+  <!-- Top chakra/wheel element -->
+  <circle cx="100" cy="25" r="12" class="logo-lines"/>
+  <circle cx="100" cy="25" r="8" class="logo-lines"/>
+  <circle cx="100" cy="25" r="4" class="logo-lines"/>
+  <!-- Spokes of chakra -->
+  <g stroke="#FF6B35" stroke-width="1" fill="none">
+    <line x1="100" y1="17" x2="100" y2="33"/>
+    <line x1="108" y1="25" x2="92" y2="25"/>
+    <line x1="105.5" y1="19.5" x2="94.5" y2="30.5"/>
+    <line x1="105.5" y1="30.5" x2="94.5" y2="19.5"/>
+  </g>
+  
+  <!-- Main central design - Goddess Saraswati -->
+  <g class="logo-details">
+    <!-- Head and crown -->
+    <circle cx="100" cy="70" r="8"/>
+    <!-- Crown details -->
+    <path d="M92,62 Q96,58 100,60 Q104,58 108,62"/>
+    <path d="M94,64 Q100,61 106,64"/>
+    
+    <!-- Body outline -->
+    <ellipse cx="100" cy="95" rx="15" ry="20"/>
+    
+    <!-- Arms - left arm holding veena -->
+    <path d="M85,80 Q80,85 82,90 Q85,95 90,92"/>
+    <!-- Right arm -->
+    <path d="M115,80 Q120,85 118,90 Q115,95 110,92"/>
+    <!-- Additional arms (four-armed goddess) -->
+    <path d="M88,85 Q83,88 85,92"/>
+    <path d="M112,85 Q117,88 115,92"/>
+    
+    <!-- Veena (musical instrument) -->
+    <ellipse cx="75" cy="88" rx="12" ry="4"/>
+    <rect x="70" y="86" width="20" height="2"/>
+    <rect x="70" y="89" width="20" height="1"/>
+    <!-- Veena strings -->
+    <line x1="72" y1="87" x2="88" y2="87" stroke-width="0.3"/>
+    <line x1="72" y1="88" x2="88" y2="88" stroke-width="0.3"/>
+    <line x1="72" y1="89" x2="88" y2="89" stroke-width="0.3"/>
+    
+    <!-- Lotus seat -->
+    <ellipse cx="100" cy="125" rx="25" ry="8"/>
+    <!-- Lotus petals -->
+    <path d="M75,125 Q85,115 95,125"/>
+    <path d="M85,125 Q95,115 105,125"/>
+    <path d="M95,125 Q105,115 115,125"/>
+    <path d="M105,125 Q115,115 125,125"/>
+    
+    <!-- Additional lotus petals around -->
+    <path d="M70,120 Q80,110 90,120"/>
+    <path d="M110,120 Q120,110 130,120"/>
+    <path d="M75,130 Q85,135 95,130"/>
+    <path d="M105,130 Q115,135 125,130"/>
+    
+    <!-- Detailed clothing/sari -->
+    <path d="M85,95 Q100,90 115,95"/>
+    <path d="M87,100 Q100,95 113,100"/>
+    <path d="M89,105 Q100,100 111,105"/>
+    
+    <!-- Sacred thread and ornaments -->
+    <path d="M95,75 Q100,78 105,75"/>
+    <path d="M98,80 Q100,82 102,80"/>
+    
+    <!-- Water/river elements at bottom -->
+    <path d="M60,135 Q70,130 80,135 Q90,140 100,135 Q110,140 120,135 Q130,130 140,135"/>
+    <path d="M65,140 Q75,135 85,140 Q95,145 105,140 Q115,145 125,140 Q135,135 145,140"/>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <g class="logo-lines">
+    <path d="M35,35 Q40,30 45,35"/>
+    <path d="M155,35 Q160,30 165,35"/>
+    <path d="M35,165 Q40,170 45,165"/>
+    <path d="M155,165 Q160,170 165,165"/>
+  </g>
+  
+  <!-- Text around the circle -->
+  <!-- Top Devanagari text -->
+  <path id="topCurve" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
+  <text class="text-devanagari" font-size="14">
+    <textPath href="#topCurve" startOffset="10%">काशी हिन्दू विश्वविद्यालय</textPath>
+  </text>
+  
+  <!-- Bottom English text -->
+  <path id="bottomCurve" d="M 170 100 A 70 70 0 0 1 30 100" fill="none"/>
+  <text class="text-english" font-size="10">
+    <textPath href="#bottomCurve" startOffset="15%">BANARAS HINDU UNIVERSITY</textPath>
+  </text>
+  
+  <!-- Side text -->
+  <text x="20" y="105" class="text-devanagari" font-size="8" transform="rotate(-90 20 105)">ध्येयं</text>
+  <text x="180" y="95" class="text-devanagari" font-size="8" transform="rotate(90 180 95)">सत्यम्</text>
+</svg>

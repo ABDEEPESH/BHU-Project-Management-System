@@ -1,0 +1,61 @@
+/* Custom styles for FundingAgencyComponent and general enhancements */
+.funding-agency-card {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.funding-agency-title {
+  color: #1E3A8A;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.funding-agency-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.funding-agency-table th,
+.funding-agency-table td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+}
+
+.funding-agency-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.funding-agency-table tr:hover {
+  background-color: #f1f5f9;
+}
+
+.funding-agency-btn {
+  background-color: #1E3A8A;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.funding-agency-btn:hover {
+  background-color: #1E40AF;
+}
+
+/* Enhance Bootstrap styles for consistency */
+.card {
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  background-color: #1E3A8A;
+  border-color: #1E3A8A;
+}
+
+.btn-primary:hover {
+  background-color: #1E40AF;
+  border-color: #1E40AF;
+}

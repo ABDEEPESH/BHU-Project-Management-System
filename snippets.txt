@@ -1,0 +1,805 @@
+# Project Snippets Catalog
+# Generated on 2025-09-06 11:09:09 (local time)
+# This file contains path listings and leading code excerpts for key backend and frontend files.
+# Sections are grouped by origin with clear headers. Each snippet shows the first 10–15 lines.
+
+==============================
+== BACKEND (Spring Boot) ==
+==============================
+
+--- Backend: ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/ProjectSubmissionApplication.java
+package dev.deepesh.ProjecrSubmission;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+@SpringBootApplication
+@ComponentScan(basePackages = {"dev.deepesh.ProjecrSubmission"})
+@EnableMongoRepositories(basePackages = "dev.deepesh.ProjecrSubmission.Repository")
+public class ProjectSubmissionApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ProjectSubmissionApplication.class, args);
+    }
+}
+
+--- Backend: ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/CorsConfig.java
+package dev.deepesh.ProjecrSubmission;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.lang.NonNull;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(@NonNull CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000", "http://localhost:8080")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
+}
+
+--- Backend: ProjecrSubmission/ProjecrSubmission/src/main/resources/application.properties
+# MongoDB Configuration
+# spring.data.mongodb.uri=${MONGO_URI:mongodb+srv://deepesh:Mongo1234@cluster0.ql7jz6z.mongodb.net/Projecr-Submission-API}
+spring.data.mongodb.uri=mongodb+srv://deepesh:Mongo1234@cluster0.ql7jz6z.mongodb.net/Projecr-Submission-API
+
+# Server Configuration
+server.port=8080
+
+# Logging for debugging
+logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG
+logging.level.org.springframework.data.mongodb=DEBUG
+logging.level.dev.deepesh.ProjecrSubmission=DEBUG
+
+# MongoDB connection timeout and retry settings
+# spring.data.mongodb.connection-pool.max-size=100
+# spring.data.mongodb.connection-pool.min-size=5
+# spring.data.mongodb.connection-pool.max-wait-time=5000
+# spring.data.mongodb.connection-pool.max-connection-life-time=30000
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/BankDetailsController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.BankDetails;
+import dev.deepesh.ProjecrSubmission.Service.BankDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/bank-details")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"})
+public class BankDetailsController {
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/EmployeeController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.Employee;
+import dev.deepesh.ProjecrSubmission.Service.EmployeeService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/FundExpenditureController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.FundExpenditure;
+import dev.deepesh.ProjecrSubmission.Service.FundExpenditureService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/FundReceiptController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.FundReceipt;
+import dev.deepesh.ProjecrSubmission.Service.FundReceiptService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/FundingAgencyController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.FundingAgency;
+import dev.deepesh.ProjecrSubmission.Service.FundingAgencyService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/HealthController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Repository.EmployeeRepository;
+import dev.deepesh.ProjecrSubmission.Repository.ProjectRepository;
+import dev.deepesh.ProjecrSubmission.Repository.FundingAgencyRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/PFMSDetailsController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.PFMSDetails;
+import dev.deepesh.ProjecrSubmission.Service.PFMSDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/ProjectController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.Project;
+import dev.deepesh.ProjecrSubmission.Service.ProjectService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+--- Backend (Controller): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/ProjectReceivedController.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import dev.deepesh.ProjecrSubmission.Model.ProjectReceived;
+import dev.deepesh.ProjecrSubmission.Service.EmployeeService;
+import dev.deepesh.ProjecrSubmission.Service.ProjectReceivedService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+--- Backend (Controller/DTO): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/ProjectResponseDTO.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class ProjectResponseDTO {
+    private String id;
+    private String projectCode;
+    private String title;
+
+--- Backend (Controller/DTO): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Controller/ProjectSubmissionDTO.java
+package dev.deepesh.ProjecrSubmission.Controller;
+
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class ProjectSubmissionDTO {
+    private String projectCode;
+    private String title;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/BankDetails.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "BankDetails")
+public class BankDetails {
+    
+    @Id
+    private String id;
+    private String bankName;
+    private String accountNumber;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/Employee.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/FundExpenditure.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/FundReceipt.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Data
+@Document(collection = "FundReceipt")
+public class FundReceipt {
+    @Id
+    @NotNull(message = "Employee ID is required")
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/FundingAgency.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/PFMSDetails.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "PFMSDetails")
+public class PFMSDetails {
+    
+    @Id
+    private String id;
+    private String pfmsScheme;
+    private String schemeCode;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/Project.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/ProjectReceived.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+--- Backend (Model): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Model/ProjectSubmission.java
+package dev.deepesh.ProjecrSubmission.Model;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Data
+@Document(collection = "ProjectSubmissionDetails")
+public class ProjectSubmission {
+    @Id
+    @NotNull(message = "Employee ID is required")
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/BankDetailsRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.BankDetails;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface BankDetailsRepository extends MongoRepository<BankDetails, String> {
+    
+    // Find by bank name
+    Optional<BankDetails> findByBankName(String bankName);
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/EmployeeRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.Employee;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+
+@Repository
+public interface EmployeeRepository extends MongoRepository<Employee, String> {
+    @Query("{'ID No': ?0}")
+    Optional<Employee> findByIdNo(String idNo);
+}
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/FundExpenditureRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.FundExpenditure;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface FundExpenditureRepository extends MongoRepository<FundExpenditure, String> {
+    
+    // Find all expenditures by project code
+    List<FundExpenditure> findByProjectCode(String projectCode);
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/FundReceiptRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.FundReceipt;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface FundReceiptRepository extends MongoRepository<FundReceipt, String> {
+    List<FundReceipt> findByProjectNumber(String projectNumber);
+    List<FundReceipt> findByIdNo(String idNo);
+    Optional<FundReceipt> findByReceiptNumber(String receiptNumber);
+    Optional<FundReceipt> findByChallanNumber(String challanNumber);
+}
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/FundingAgencyRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.FundingAgency;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface FundingAgencyRepository extends MongoRepository<FundingAgency, String> {
+    Optional<FundingAgency> findByFundingAgencyId(String fundingAgencyId);
+    Optional<FundingAgency> findByName(String name);
+}
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/PFMSDetailsRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.PFMSDetails;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface PFMSDetailsRepository extends MongoRepository<PFMSDetails, String> {
+    
+    // Find by PFMS scheme
+    Optional<PFMSDetails> findByPfmsScheme(String pfmsScheme);
+
+--- Backend (Repository): ProjecrSubmission/ProjecrSubmission/src/main/java/dev/deepesh/ProjecrSubmission/Repository/ProjectReceivedRepository.java
+package dev.deepesh.ProjecrSubmission.Repository;
+
+import dev.deepesh.ProjecrSubmission.Model.ProjectReceived;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+@Repository
+public interface ProjectReceivedRepository extends MongoRepository<ProjectReceived, String> {
+    List<ProjectReceived> findByIdNo(String idNo);
+}
+
+
+=============================
+== FRONTEND (React + CRA) ==
+=============================
+
+--- Frontend: employee-project-frontend-cra/src/index.tsx
+import { createRoot } from 'react-dom/client';
+import React from 'react';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import './index.css';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Root element not found');
+
+const root = createRoot(rootElement);
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+--- Frontend: employee-project-frontend-cra/src/App.tsx
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import MainNavigation from './components/MainNavigation';
+import EmployeeComponent from './components/Employee';
+import FundingAgencyComponent from './components/FundingAgency';
+import FundReceiptList from './components/FundReceiptList';
+import ProjectReceivedComponent from './components/ProjectRecievedComponent';
+import ProjectSubmission from './components/ProjectSubmission';
+// Import form components
+import EmployeeForm from './forms/EmployeeForm';
+import FundingAgencyForm from './forms/FundingAgencyForm';
+import ProjectSubmissionForm from './forms/ProjectSubmissionForm';
+import ProjectRecievedForm from './forms/ProjectRecievedForm';
+
+--- Frontend: employee-project-frontend-cra/src/App.css
+.app {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 1rem;
+}
+
+/* Navigation improvements */
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/Navigation.tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import DarkModeToggle from './DarkModeToggle';
+
+const Navigation: React.FC = () => {
+  return (
+    <nav className="navbar navbar-expand-lg bg-light shadow-sm">
+      <div className="container-fluid">
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img 
+            src="/bhu-favicon-32x32.svg" 
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/DarkModeToggle.tsx
+import React from 'react';
+import { useDarkMode } from '../contexts/DarkModeContext';
+
+const DarkModeToggle: React.FC = () => {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+
+  return (
+    <button
+      onClick={toggleDarkMode}
+      className="btn btn-outline-secondary btn-sm"
+      title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/MainNavigation.tsx
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+interface MainNavigationProps {
+  employees?: any[];
+  fundingAgencies?: any[];
+  projectSubmissions?: any[];
+  projectReceiveds?: any[];
+}
+
+const MainNavigation: React.FC<MainNavigationProps> = ({ 
+  employees = [], 
+  fundingAgencies = [], 
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/Employee.tsx
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { fetchEmployeeById } from '../services/api';
+import type { EmployeeDTO } from '../types';
+
+interface EmployeeProps {
+  employees: EmployeeDTO[];
+}
+
+const EmployeeComponent: React.FC<EmployeeProps> = ({ employees }) => {
+  const { employeeId } = useParams<{ employeeId?: string }>();
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/FundingAgency.tsx
+import React, { useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import type { FundingAgencyDTO } from '../types';
+
+interface FundingAgencyProps {
+  fundingAgencies: FundingAgencyDTO[];
+}
+
+const FundingAgencyComponent: React.FC<FundingAgencyProps> = ({ fundingAgencies }) => {
+  const { fundingAgencyId } = useParams<{ fundingAgencyId?: string }>();
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/FundExpenditureList.tsx
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { fetchFundExpenditures, deleteFundExpenditure } from '../services/api';
+import type { FundExpenditureDTO } from '../types';
+
+const FundExpenditureList: React.FC = () => {
+  const [expenditures, setExpenditures] = useState<FundExpenditureDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/FundReceiptList.tsx
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchFundReceipts, deleteFundReceipt } from '../services/api';
+import type { FundReceiptDTO } from '../types';
+
+const FundReceiptList: React.FC = () => {
+  const navigate = useNavigate();
+  const [receipts, setReceipts] = useState<FundReceiptDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/FundReceipt.tsx
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchFundReceipts } from '../services/api';
+import type { FundReceiptDTO } from '../types';
+
+const FundReceiptList: React.FC = () => {
+  const navigate = useNavigate();
+  const [receipts, setReceipts] = useState<FundReceiptDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/ProjectRecievedComponent.tsx
+import React, { useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import type { ProjectReceivedDTO } from '../types';
+
+interface ProjectReceivedProps {
+  projectReceiveds: ProjectReceivedDTO[];
+}
+
+const ProjectReceivedComponent: React.FC<ProjectReceivedProps> = ({ projectReceiveds }) => {
+  const { id } = useParams<{ id?: string }>();
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/ProjectSubmission.tsx
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchProjectSubmissions, fetchFundingAgencyByFundingAgencyId } from '../services/api';
+import type { ProjectSubmissionDTO, FundingAgencyDTO } from '../types';
+
+const ProjectSubmission: React.FC = () => {
+  const navigate = useNavigate();
+  const [submissions, setSubmissions] = useState<ProjectSubmissionDTO[]>([]);
+
+--- Frontend (Component): employee-project-frontend-cra/src/components/QuickSearch.tsx
+import React, { useState, useEffect } from 'react';
+import { fetchProjectSubmissions, fetchProjectReceiveds, fetchFundingAgencies, fetchEmployees } from '../services/api';
+import type { ProjectSubmissionDTO, ProjectReceivedDTO, FundingAgencyDTO, EmployeeDTO } from '../types';
+
+interface SearchResult {
+  type: 'submission' | 'received';
+  id: string;
+  projectName: string;
+  employeeId: string;
+
+--- Frontend (Form): employee-project-frontend-cra/src/forms/EmployeeForm.tsx
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { createEmployee } from '../services/api';
+import type { EmployeeDTO } from '../types';
+
+interface EmployeeFormProps {
+  onEmployeeCreated?: () => void;
+}
+
+const EmployeeForm: React.FC<EmployeeFormProps> = ({ onEmployeeCreated }) => {
+  const navigate = useNavigate();
+
+--- Frontend (Form): employee-project-frontend-cra/src/forms/FundingAgencyForm.tsx
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createFundingAgency, fetchFundingAgencyByFundingAgencyId } from '../services/api';
+import type { FundingAgencyDTO } from '../types';
+
+interface FundingAgencyFormProps {
+  onFundingAgencyCreated?: () => void;
+}
+
+const FundingAgencyForm: React.FC<FundingAgencyFormProps> = ({ onFundingAgencyCreated }) => {
+  const navigate = useNavigate();
+
+--- Frontend (Form): employee-project-frontend-cra/src/forms/ProjectSubmissionForm.tsx
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createProjectSubmission, fetchEmployeeById, fetchFundingAgencies } from '../services/api';
+import type { EmployeeDTO, FundingAgencyDTO, ProjectSubmissionDTO } from '../types';
+
+interface ProjectSubmissionFormProps {
+  onProjectSubmissionCreated?: () => void;
+}
+
+const ProjectSubmissionForm: React.FC<ProjectSubmissionFormProps> = ({ onProjectSubmissionCreated }) => {
+  const navigate = useNavigate();
+
+--- Frontend (Form): employee-project-frontend-cra/src/forms/ProjectRecievedForm.tsx
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createProjectReceived, fetchEmployeeById, fetchFundingAgencies } from '../services/api';
+import type { EmployeeDTO, FundingAgencyDTO, ProjectReceivedDTO } from '../types';
+
+interface ProjectReceivedFormProps {
+  onProjectReceivedCreated?: () => void;
+}
+
+const ProjectReceivedForm: React.FC<ProjectReceivedFormProps> = ({ onProjectReceivedCreated }) => {
+  const navigate = useNavigate();
+
+--- Frontend (Form): employee-project-frontend-cra/src/forms/FundExpenditureForm.tsx
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createFundExpenditure, fetchProjectByProjectCode, checkFundExpenditureExists } from '../services/api';
+import type { FundExpenditureDTO, ProjectResponseDTO } from '../types';
+
+const FundExpenditureForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState<FundExpenditureDTO>({
+    projectCode: '',
+    projectTitle: '',
+
+--- Frontend (Confirmation): employee-project-frontend-cra/src/confirmation/ProjectSubmissionConfirmation.tsx
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { fetchFundingAgencyByFundingAgencyId } from '../services/api';
+import type { ProjectSubmissionDTO, FundingAgencyDTO } from '../types';
+
+const ProjectSubmissionConfirmation: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const formData = location.state?.formData as ProjectSubmissionDTO | undefined;
+
+--- Frontend (Confirmation): employee-project-frontend-cra/src/confirmation/ProjectRecivedConfirmation.tsx
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import type { ProjectReceivedDTO } from '../types';
+
+const ProjectReceivedConfirm: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const formData = location.state?.formData as ProjectReceivedDTO | undefined;
+
+--- Frontend (Confirmation): employee-project-frontend-cra/src/confirmation/FundExpenditureConfirmation.tsx
+import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import type { FundExpenditureDTO } from '../types';
+
+const FundExpenditureConfirmation: React.FC = () => {
+  const location = useLocation();
+  const expenditure = location.state?.expenditure as FundExpenditureDTO;
+
+--- Frontend (Context): employee-project-frontend-cra/src/contexts/DarkModeContext.tsx
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+
+interface DarkModeContextType {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+  setDarkMode: (dark: boolean) => void;
+}
+
+const DarkModeContext = createContext<DarkModeContextType | undefined>(undefined);
+
+export const useDarkMode = () => {
+  const context = useContext(DarkModeContext);
+
+--- Frontend (Services): employee-project-frontend-cra/src/services/api.ts
+import axios from 'axios';
+import type { EmployeeDTO, ProjectResponseDTO, FundingAgencyDTO, ProjectSubmissionDTO, ProjectReceivedDTO, FundReceiptDTO, BankDetailsDTO, PFMSDetailsDTO, FundExpenditureDTO } from '../types';
+
+function isAxiosError(error: any): error is { response?: { status: number; statusText: string; data?: any } } {
+  return error && typeof error === 'object' && 'response' in error;
+}
+
+const api = axios.create({
+  baseURL: 'http://localhost:8080/api',
+  withCredentials: false,
+});
+
+// Interceptor to log requests and responses
+api.interceptors.request.use(
+  (config) => {
+
+--- Frontend (Types): employee-project-frontend-cra/src/types.ts
+// src/types.ts
+export interface ProjectDTO {
+  projectNumber: string;
+  projectName: string;
+}
+
+// Extended ProjectDTO to map from ProjectResponseDTO
+export interface ProjectMapping {
+  projectResponseToDTO: (response: ProjectResponseDTO) => ProjectDTO;
+}
+
+export interface EmployeeDTO {
+  _id: string;
+  idNo: string; // String, matching Employee model
+
+--- Frontend (Public): employee-project-frontend-cra/public/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1E3A8A" />
+    <meta
+      name="description"
+      content="Banaras Hindu University Project Management Dashboard for Employees, Projects, Funding Agencies, and Project Submissions"
+    />
+
+--- Frontend (Public): employee-project-frontend-cra/public/manifest.json
+{
+  "name": "BHU Project Management Sysytem",
+  "short_name": "BHU PMS",
+  "icons": [
+    {
+      "src": "web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+--- Frontend (Public): employee-project-frontend-cra/public/styles.css
+/* Custom styles for FundingAgencyComponent and general enhancements */
+.funding-agency-card {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.funding-agency-title {
+  color: #1E3A8A;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+=============================
+== END OF SNIPPETS FILE ==
+=============================
