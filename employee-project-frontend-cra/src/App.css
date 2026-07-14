@@ -1,0 +1,284 @@
+.app {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 1rem;
+}
+
+/* Navigation improvements */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Card hover effects */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive table improvements */
+.table-responsive {
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Button improvements */
+.btn {
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+/* Alert improvements */
+.alert {
+  border-radius: 0.5rem;
+  border: none;
+}
+
+/* Spinner improvements */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Logo responsive styles */
+.bhu-header-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.sric-header {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #212529;
+  color: #f8f9fa;
+}
+
+.dark-mode .app {
+  background-color: #212529;
+}
+
+.dark-mode .card {
+  background-color: #343a40;
+  border-color: #495057;
+  color: #f8f9fa;
+}
+
+.dark-mode .card-header {
+  background-color: #495057 !important;
+  border-color: #6c757d;
+}
+
+.dark-mode .table {
+  color: #f8f9fa;
+}
+
+.dark-mode .table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: #495057;
+}
+
+.dark-mode .table-hover > tbody > tr:hover > td {
+  background-color: #6c757d;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+  background-color: #495057;
+  border-color: #6c757d;
+  color: #f8f9fa;
+}
+
+.dark-mode .form-control:focus,
+.dark-mode .form-select:focus {
+  background-color: #495057;
+  border-color: #0d6efd;
+  color: #f8f9fa;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.dark-mode .alert-light {
+  background-color: #495057;
+  border-color: #6c757d;
+  color: #f8f9fa;
+}
+
+.dark-mode .text-muted {
+  color: #adb5bd !important;
+}
+
+.dark-mode .navbar {
+  background-color: #343a40 !important;
+  border-color: #495057;
+}
+
+.dark-mode .btn-outline-secondary {
+  color: #f8f9fa;
+  border-color: #6c757d;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #f8f9fa;
+}
+
+/* Purple button styles for Fund Expenditure */
+.btn-purple {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #5a32a3;
+  border-color: #5a32a3;
+  color: white;
+}
+
+.btn-outline-purple {
+  color: #6f42c1;
+  border-color: #6f42c1;
+}
+
+.btn-outline-purple:hover {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: white;
+}
+
+.dark-mode .btn-purple {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.dark-mode .btn-purple:hover {
+  background-color: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.dark-mode .btn-outline-purple {
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.dark-mode .btn-outline-purple:hover {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+  color: white;
+}
+
+/* Scoped overrides to ensure Fund Expenditure buttons appear purple */
+.fund-exp-card .btn-outline-purple {
+  color: #6f42c1 !important;
+  border-color: #6f42c1 !important;
+  background-color: transparent !important;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.fund-exp-card .btn-outline-purple:hover,
+.fund-exp-card .btn-outline-purple:focus {
+  background-color: #6f42c1 !important;
+  border-color: #6f42c1 !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.fund-exp-card .btn-purple {
+  background-color: #6f42c1 !important;
+  border-color: #6f42c1 !important;
+  color: #fff !important;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.fund-exp-card .btn-purple:hover,
+.fund-exp-card .btn-purple:focus {
+  background-color: #5a32a3 !important;
+  border-color: #5a32a3 !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* Purple gradient background */
+.bg-purple {
+  background-color: #6f42c1 !important;
+}
+
+.bg-purple.bg-gradient {
+  background: linear-gradient(135deg, #6f42c1 0%, #8b5cf6 100%) !important;
+}
+
+.dark-mode .bg-purple {
+  background-color: #8b5cf6 !important;
+}
+
+.dark-mode .bg-purple.bg-gradient {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%) !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 0.5rem;
+  }
+  
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  /* Logo adjustments for mobile */
+  .bhu-header-logo {
+    max-height: 120px !important;
+  }
+  
+  .sric-header {
+    max-height: 100px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-header h2,
+  .card-header h3,
+  .card-header h4 {
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}

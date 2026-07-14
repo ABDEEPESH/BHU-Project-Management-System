@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="200" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .hindi-title { fill: #1E40AF; font-family: 'Noto Sans Devanagari', Arial, sans-serif; font-size: 26px; font-weight: bold; }
+      .english-title { fill: #1E40AF; font-family: Arial, sans-serif; font-size: 28px; font-weight: bold; }
+      .project-title { fill: #1E40AF; font-family: Arial, sans-serif; font-size: 36px; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="200" fill="#F8FAFC"/>
+  
+  <!-- Hindi title -->
+  <text x="450" y="45" text-anchor="middle" class="hindi-title">प्रायोजित शोध एवं औद्योगिक परामर्श प्रकोष्ठ</text>
+  
+  <!-- English title -->
+  <text x="450" y="85" text-anchor="middle" class="english-title">Sponsored Research and Industrial Consultancy Cell</text>
+  
+  <!-- Decorative line -->
+  <line x1="150" y1="115" x2="750" y2="115" stroke="#1E40AF" stroke-width="3"/>
+  
+  <!-- Project Management System -->
+  <text x="450" y="160" text-anchor="middle" class="project-title">Project Management System</text>
+</svg>
