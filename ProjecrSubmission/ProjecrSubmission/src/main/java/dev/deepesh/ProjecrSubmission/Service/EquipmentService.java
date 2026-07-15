@@ -2,7 +2,6 @@ package dev.deepesh.ProjecrSubmission.Service;
 
 import dev.deepesh.ProjecrSubmission.Model.Equipment;
 import dev.deepesh.ProjecrSubmission.Model.Project;
-import dev.deepesh.ProjecrSubmission.Model.Employee;
 import dev.deepesh.ProjecrSubmission.Repository.EquipmentRepository;
 import dev.deepesh.ProjecrSubmission.Service.ProjectService;
 import dev.deepesh.ProjecrSubmission.Service.EmployeeService;

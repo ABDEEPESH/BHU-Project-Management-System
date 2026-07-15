@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="outerGradient" cx="0.5" cy="0.3" r="0.7">
+      <stop offset="0%" style="stop-color:#FF8C65"/>
+      <stop offset="100%" style="stop-color:#FF6B35"/>
+    </radialGradient>
+    <style>
+      .outer-circle { fill: url(#outerGradient); stroke: #D45428; stroke-width: 0.8; }
+      .inner-elements { fill: none; stroke: #FFFFFF; stroke-width: 1; }
+      .deity-elements { fill: #FFFFFF; stroke: #FFFFFF; stroke-width: 0.5; }
+      .text-elements { fill: #FFFFFF; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; }
+    </style>
+  </defs>
+  
+  <!-- Main outer circle -->
+  <circle cx="16" cy="16" r="15" class="outer-circle"/>
+  
+  <!-- Inner decorative circles -->
+  <circle cx="16" cy="16" r="12" class="inner-elements"/>
+  <circle cx="16" cy="16" r="9" class="inner-elements"/>
+  
+  <!-- Top chakra/divine element -->
+  <circle cx="16" cy="7" r="2" class="inner-elements"/>
+  <path d="M14,7 L18,7 M16,5 L16,9" class="inner-elements"/>
+  
+  <!-- Central Saraswati figure (highly simplified but recognizable) -->
+  <g class="deity-elements">
+    <!-- Head -->
+    <circle cx="16" cy="13" r="2"/>
+    <!-- Crown/decoration -->
+    <path d="M14,11 Q16,9 18,11"/>
+    <!-- Body -->
+    <ellipse cx="16" cy="18" rx="2.5" ry="3"/>
+    <!-- Multiple arms suggestion -->
+    <path d="M13,15 Q14,13 15,15"/>
+    <path d="M17,15 Q18,13 19,15"/>
+    <!-- Veena (instrument) -->
+    <line x1="12" y1="17" x2="20" y2="17" stroke-width="1"/>
+    <line x1="12" y1="18" x2="20" y2="18" stroke-width="0.5"/>
+    <!-- Lotus base -->
+    <path d="M13,21 Q16,19 19,21"/>
+  </g>
+  
+  <!-- Sanskrit/Devanagari characters -->
+  <text x="16" y="26" text-anchor="middle" class="text-elements" font-size="3">काशी</text>
+  <text x="16" y="29" text-anchor="middle" class="text-elements" font-size="2.5">BHU</text>
+  
+  <!-- Side decorative elements -->
+  <path d="M6,12 Q8,10 10,12" class="inner-elements"/>
+  <path d="M22,12 Q24,10 26,12" class="inner-elements"/>
+  <path d="M6,20 Q8,22 10,20" class="inner-elements"/>
+  <path d="M22,20 Q24,22 26,20" class="inner-elements"/>
+</svg>
