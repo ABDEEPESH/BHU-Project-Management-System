@@ -28,7 +28,8 @@ public class MongoConfig {
     @ReadingConverter
     public static class StringToDoubleConverter implements org.springframework.core.convert.converter.Converter<String, Double> {
         @Override
-        public Double convert(@org.eclipse.jdt.annotation.NonNull String source) {
+        @SuppressWarnings("null")
+        public Double convert(String source) {
             if (source == null || source.trim().isEmpty()) {
                 return 0.0;
             }
@@ -43,7 +44,8 @@ public class MongoConfig {
     @ReadingConverter
     public static class ObjectToDoubleConverter implements org.springframework.core.convert.converter.Converter<Object, Double> {
         @Override
-        public Double convert(@org.eclipse.jdt.annotation.NonNull Object source) {
+        @SuppressWarnings("null")
+        public Double convert(Object source) {
             if (source == null) {
                 return 0.0;
             }
@@ -68,7 +70,8 @@ public class MongoConfig {
     @ReadingConverter
     public static class DocumentToProjectSubmissionConverter implements org.springframework.core.convert.converter.Converter<Document, ProjectSubmission> {
         @Override
-        public ProjectSubmission convert(@org.eclipse.jdt.annotation.NonNull Document source) {
+        @SuppressWarnings("null")
+        public ProjectSubmission convert(Document source) {
             ProjectSubmission ps = new ProjectSubmission();
 
             Object empObj = source.get("Emp");
@@ -118,7 +121,8 @@ public class MongoConfig {
     @ReadingConverter
     public static class DocumentToBankDetailsConverter implements org.springframework.core.convert.converter.Converter<Document, BankDetails> {
         @Override
-        public BankDetails convert(@org.eclipse.jdt.annotation.NonNull Document source) {
+        @SuppressWarnings("null")
+        public BankDetails convert(Document source) {
             BankDetails bd = new BankDetails();
 
             String bankName = getAny(source, "Bank Name", "bankName");

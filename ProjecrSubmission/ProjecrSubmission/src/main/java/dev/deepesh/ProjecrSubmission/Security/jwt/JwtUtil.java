@@ -45,7 +45,6 @@ public class JwtUtil {
     }
 
     public String extractUsername(String token) {
-        @SuppressWarnings("unchecked")
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -84,7 +83,6 @@ public class JwtUtil {
     }
 
     private Date extractExpiration(String token) {
-        @SuppressWarnings("unchecked")
         return extractClaim(token, Claims::getExpiration);
     }
 }

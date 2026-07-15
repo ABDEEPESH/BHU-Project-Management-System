@@ -123,25 +123,21 @@ public class ApprovalController {
                 boolean approved = approvalService.hasSingleApproval(op, username);
                 boolean rejected = approvalService.isSingleRejected(op, username);
                 if (approved) {
-                    @SuppressWarnings("unchecked")
-                    var data = Map.of(
+                    emitter.send(SseEmitter.event().name("approved").data(Map.of(
                             "user", username,
                             "form", formName.toUpperCase(),
                             "approved", true
-                    );
-                    emitter.send(SseEmitter.event().name("approved").data(data));
+                    )));
                     emitter.complete();
                     return;
                 }
                 if (rejected) {
-                    @SuppressWarnings("unchecked")
-                    var data = Map.of(
+                    emitter.send(SseEmitter.event().name("rejected").data(Map.of(
                             "user", username,
                             "form", formName.toUpperCase(),
                             "approved", false,
                             "rejected", true
-                    );
-                    emitter.send(SseEmitter.event().name("rejected").data(data));
+                    )));
                     emitter.complete();
                     return;
                 }
@@ -151,25 +147,21 @@ public class ApprovalController {
                     boolean nowApproved = approvalService.hasSingleApproval(op, username);
                     boolean nowRejected = approvalService.isSingleRejected(op, username);
                     if (nowApproved) {
-                        @SuppressWarnings("unchecked")
-                        var data = Map.of(
+                        emitter.send(SseEmitter.event().name("approved").data(Map.of(
                                 "user", username,
                                 "form", formName.toUpperCase(),
                                 "approved", true
-                        );
-                        emitter.send(SseEmitter.event().name("approved").data(data));
+                        )));));
                         emitter.complete();
                         return;
                     }
                     if (nowRejected) {
-                        @SuppressWarnings("unchecked")
-                        var data = Map.of(
+                        emitter.send(SseEmitter.event().name("rejected").data(Map.of(
                                 "user", username,
                                 "form", formName.toUpperCase(),
                                 "approved", false,
                                 "rejected", true
-                        );
-                        emitter.send(SseEmitter.event().name("rejected").data(data));
+                        )));
                         emitter.complete();
                         return;
                     }
@@ -177,13 +169,11 @@ public class ApprovalController {
                     emitter.send(SseEmitter.event().name("ping").data("."));
                 }
                 // timeout without approval
-                @SuppressWarnings("unchecked")
-                var data = Map.of(
+                emitter.send(SseEmitter.event().name("timeout").data(Map.of(
                         "user", username,
                         "form", formName.toUpperCase(),
                         "approved", false
-                );
-                emitter.send(SseEmitter.event().name("timeout").data(data));
+                )));
                 emitter.complete();
             } catch (Exception ex) {
                 try { emitter.completeWithError(ex); } catch (Exception ignored) {}
